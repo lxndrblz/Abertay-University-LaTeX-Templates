@@ -1,0 +1,45 @@
+﻿\documentclass[a4paper,12pt]{article}
+% Language and font encodings}
+\usepackage[british]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Useful packages
+\usepackage{hyperref}
+\usepackage[backend=biber,style=bath]{biblatex}
+\usepackage[autostyle,english=british]{csquotes}
+\usepackage{glossaries}
+\usepackage{subfiles}
+\usepackage{lipsum}
+% Sets page size and margins
+\usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=2.54cm,right=2.54cm]{geometry}
+
+% Custom variables
+\newcommand{\hmwkTitle}{Yet another fancy essay template for LaTeX} % Assignment title
+\newcommand{\hmwkAuthorName}{Alexander Bilz} % Author
+
+\hypersetup{
+  pdftitle={\hmwkTitle},
+  pdfauthor={\hmwkAuthorName},
+  pdfkeywords={},
+  hidelinks,
+  pdfproducer={LaTeX Workshop},
+  pdfcreator=pdflatex}
+\title{\hmwkTitle}
+\author{\hmwkAuthorName}
+% Include a bibliography file
+\addbibresource{bib.bib}
+% replicate 1.5 line spacing word
+\linespread{1.25}
+% Make it look like horse manure and apply a sans serif font
+\renewcommand{\familydefault}{\sfdefault}
+% Main content
+\begin{document}
+\maketitle
+
+% Define any acronyms
+% \newacronym{GDPR}{GDPR}{General Data Protection Regulation}
+
+\subfile{sections/introduction}
+
+\printbibliography[heading=bibintoc]
+\end{document}
