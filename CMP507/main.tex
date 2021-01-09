@@ -1,0 +1,365 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[british]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[hyphens,obeyspaces]{url}
+\usepackage{hyperref} 
+\usepackage{fancyhdr} 
+\usepackage{lastpage} 
+\usepackage{extramarks}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[backend=biber,style=bath]{biblatex}
+\usepackage[autostyle,english=british]{csquotes}
+\usepackage[export]{adjustbox}
+\usepackage{listings}
+% Required for insertion of code
+\usepackage[toc,nopostdot, nonumberlist,style=long,acronym]{glossaries}
+\usepackage{float}
+\usepackage[titletoc]{appendix}
+\usepackage{subfig}
+% setup margins
+\usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=2.54cm,right=2.54cm]{geometry}
+% replicate 1.5 line spacing word
+\linespread{1.25}
+% Make it look like horse manure and apply a sans serif font
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{booktabs}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fancyvrb}
+\usepackage{pgfplotstable}
+% draw a fancy gantt chart
+\usepackage{pgfgantt}
+% number to text
+\usepackage{fmtcount}
+% draw directory structures
+\usepackage{dirtree}
+% Break tables over multiple pages (good for lots of bird pics in the appendix)
+\usepackage{longtable}
+%include pdf files (embed collected documents directly.)
+\usepackage{pdfpages}
+% subfiles
+\usepackage{subfiles}
+% multiline Rows
+\usepackage{array}
+% Include some blindtext just for this demo.
+\usepackage{lipsum}
+% Custom Column types, good for long entries in tables (such as hashes), which shouldn't be line wrapped
+\newcolumntype{L}{>{\arraybackslash}m{7cm}}
+\newcolumntype{X}{>{\arraybackslash}m{10cm}}
+\newcolumntype{S}{>{\arraybackslash}m{5cm}}
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkClass\ (\hmwkShortTitle)} % Top center head
+\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+% \setlength\parindent{0pt} % Removes all indentation from paragraphs
+% Remove label from subfloat
+\captionsetup[subfloat]{labelformat=empty, font=scriptsize}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Digital Forensics Report} % Assignment title
+\newcommand{\hmwkDueDate}{\today} % Due date
+\newcommand{\hmwkClass}{CMP507} % Unité
+\newcommand{\hmwkClassTime}{Digital Forensics Masters} % Vide
+\newcommand{\hmwkClassInstructor}{} % Objet du rapport
+\newcommand{\hmwkShortTitle}{Digital Forensics Report} % Objet du rapport (version courte)
+\newcommand{\hmwkAuthorName}{Alexander Bilz} % Vore nom
+\newcommand{\hmwkCase}{Case against John Doe} % Nom de la personne requerante
+\newcommand{\hmwkCaseReference}{JD0001} % Nom de la personne requerante
+\hypersetup{
+  pdftitle={\hmwkTitle},
+  pdfauthor={\hmwkAuthorName},
+  pdfkeywords={digital forensics, court report},
+  hidelinks,
+  pdfproducer={LaTeX Workshop},
+  pdfcreator=pdflatex}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\centering{\includegraphics[width=.4\textwidth]{abertay.jpg}}\\
+\vspace{2in}
+\textmd{\textbf{\hmwkTitle}}\\
+\normalsize\vspace{0.1in}\large{\textit{\hmwkClass:\ \hmwkClassTime }}\\
+\normalsize\vspace{0.1in}\large{\textit{\hmwkCase\ (\hmwkCaseReference) }}\\
+\vspace{0.1in}\small{\hmwkDueDate}\\
+\vspace{3in}
+}
+
+\author{
+  \textbf{\hmwkAuthorName}\\
+  \normalsize\vspace{0.1in}\small{2003934@abertay.ac.uk}
+}
+\date{}
+
+
+
+%----------------------------------------------------------------------------------------
+%	Glossary
+%----------------------------------------------------------------------------------------
+
+% Acronyms
+\newacronym{IIOB}{IIOB}{Indecent Images Of Birds}
+
+\newglossaryentry{clock skew}
+{
+    name=clock skew,
+    description={Clock skew is a phenomenon, where a synchronised clock's time drifts from the realtime. This happens due to hardware failure, location and local time zone offsets, as well as clock tampering.}
+}
+\makeglossaries
+%----------------------------------------------------------------------------------------
+%	Verbatim Input (good for embedding tool outputs such as Clam AV, md5deep..)
+%----------------------------------------------------------------------------------------
+
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+{fontsize=\footnotesize,
+ %
+ frame=lines,  % top and bottom rule only
+ framesep=2em, % separation between frame and text
+ rulecolor=\color{Gray},
+ %
+ label=\fbox{\color{Black}data.txt},
+ labelposition=topline,
+ %
+ commandchars=\|\(\), % escape character and argument delimiters for
+                      % commands within the verbatim
+ commentchar=*        % comment character
+}
+
+%----------------------------------------------------------------------------------------
+%	Variables Number of recovered evidence (Define additional ones as needed)
+%----------------------------------------------------------------------------------------
+
+\newcommand{\NumberOfImages}{129}
+
+\begin{document}
+
+%TC:ignore
+\clearpage\maketitle
+\thispagestyle{empty}
+
+\newpage
+\tableofcontents
+
+%List of Acronyms
+\newpage
+\printglossary[type=\acronymtype,title={List of Acronyms}]
+%TC:endignore
+\newpage
+%----------------------------------------------------------------------------------------
+%	Case Summary
+%----------------------------------------------------------------------------------------
+\section*{Case Summary}
+Let's reference a glossary entry:~\gls{clock skew}. \\
+Let's reference an acronym:~\acrfull{IIOB}.\\
+\lipsum
+%----------------------------------------------------------------------------------------
+%	Description of Crime
+%----------------------------------------------------------------------------------------
+\section{Description of Crime}
+\label{sec:description_of_crime}
+\lipsum[66]
+\begin{figure}[!h]
+  \small
+  \centering
+  \begin{ganttchart}[
+  hgrid,
+  vgrid,
+  time slot format=little-endian,
+  milestone right shift=-0.1,
+  milestone left shift=0.1,
+  x unit=0.5cm,
+  y unit chart=0.8cm,
+  ]{23.01.2020}{10.02.2020}
+  \gantttitlecalendar{year, month,day} \\
+  \ganttgroup{Identified Phase}{24.01.2020}{09.02.2020} \\
+  \ganttmilestone{A Milestone}{24.01.2020} \ganttnewline
+  \ganttgroup{Identified Phase}{02.02.2020}{09.02.2020} \\
+   \ganttmilestone{A Milestone}{02.02.2020} \ganttnewline
+  \ganttgroup{Identified Phase}{09.02.2020}{09.02.2020} \\
+   \ganttmilestone{A Milestone}{09.02.2020} \ganttnewline
+  \end{ganttchart}
+  \caption{Timeline of events}
+  \label{fig:timeline-of-event}
+  \end{figure}
+\pagebreak
+%----------------------------------------------------------------------------------------
+%	Description of Investigation
+%----------------------------------------------------------------------------------------
+\section{Description of Investigation}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+%	Job Description & Instructions
+%----------------------------------------------------------------------------------------
+\subsection{Job Description \& Instructions}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+% Computer Evidence Analysed
+%----------------------------------------------------------------------------------------
+\subsection{Computer Evidence Analysed}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+%	Methodology
+%----------------------------------------------------------------------------------------
+\subsection{Methodology}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+%	Acquisition
+%----------------------------------------------------------------------------------------
+\subsubsection{Acquisition}
+\lipsum[66].
+%----------------------------------------------------------------------------------------
+%	Preservation
+%----------------------------------------------------------------------------------------
+\subsubsection{Preservation}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+%	Antivirus
+%----------------------------------------------------------------------------------------
+\subsubsection{Antivirus Scan}
+\label{sec:antivirus_scan}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+%	Physical & Logical Search
+%----------------------------------------------------------------------------------------
+\subsubsection{Physical \& Logical Search}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+% Analysis
+%----------------------------------------------------------------------------------------
+\subsection{Analysis}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+%	Disk Information and Partitions
+%----------------------------------------------------------------------------------------
+\subsubsection{Disk Information and Partitions}
+\label{sec:disk_information_partitions}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+%	User Accounts
+%----------------------------------------------------------------------------------------
+\subsubsection{User Accounts}
+\label{sec:user_accounts}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+%	Uptime and Logon Times
+%----------------------------------------------------------------------------------------
+\subsubsection{Uptimes \& Logon Times}
+\label{sec:logon_times}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+%	Installed Software
+%----------------------------------------------------------------------------------------
+\subsubsection{Installed Software}
+\label{sec:installed_software}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+% Peripherals & Removable Storage Devices
+%----------------------------------------------------------------------------------------
+\subsubsection{Peripherals \& Removable Storage Devices}
+\label{sec:peripherals_removable_storage}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+% Browser-based Evidence
+%----------------------------------------------------------------------------------------
+\subsubsection{Browser-based Evidence}
+\label{sec:browser_based_evidence}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+% Registry Analysis
+%----------------------------------------------------------------------------------------
+\subsubsection{Registry Analysis}
+\label{sec:registry_analysis}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+% Images
+%----------------------------------------------------------------------------------------
+\subsubsection{Images}
+\label{sec:images}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+% Audio Files
+%----------------------------------------------------------------------------------------
+\subsubsection{Audio Files}
+\label{sec:media_files}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+% Encrypted File
+%----------------------------------------------------------------------------------------
+\subsubsection{Encrypted File}
+\label{sec:encrypted_file}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+% Obfuscated File
+%----------------------------------------------------------------------------------------
+\subsubsection{Obfuscated Files}
+\label{sec:obfuscated_files}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+% E-Mail Conversations
+%----------------------------------------------------------------------------------------
+\subsubsection{Email Conversations}
+\label{sec:email_conversations}
+\lipsum[66]
+%----------------------------------------------------------------------------------------
+% Production List
+%----------------------------------------------------------------------------------------
+\subsection{Production List and Associated Description}
+\label{sec:production_list}
+\begin{table}[H]
+  \small
+  \begin{tabular}{lllp{7cm}}
+  \cline{2-4}
+  ID & Production Number & Category             & Description          \\ \cline{2-4} 
+  1  & JD0001-01         & Images               &  Your Description                 \\
+  2  & JD0001-02         & Download  & Your Description \\  \cmidrule(l){2-4}                                                                                                                
+  \end{tabular}
+  \caption{Production List}
+  \label{tab:production_list}
+  \end{table}
+%----------------------------------------------------------------------------------------
+% Conclusion
+%----------------------------------------------------------------------------------------
+\section{Conclusions}
+\lipsum[66]
+\begin{itemize}
+  \item \lipsum[66]
+  \item Include more items as needed ..
+\end{itemize}
+\lipsum
+
+%----------------------------------------------------------------------------------------
+%	Glossary
+%----------------------------------------------------------------------------------------
+\clearpage
+
+\printglossary
+\clearpage
+%----------------------------------------------------------------------------------------
+%	Appendix (won't count as words)
+%----------------------------------------------------------------------------------------
+
+%TC:ignore
+\appendix
+\appendixpage
+\addappheadtotoc
+\subfile{sections/appendix/preservation}
+% Include more subfiles as needed
+%TC:endignore
+
+\end{document}
