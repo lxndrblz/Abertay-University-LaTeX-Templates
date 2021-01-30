@@ -1,0 +1,120 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% TODO Should BIB style match IEEE?
+\usepackage[style=bath]{biblatex}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{lipsum}
+% draw a fancy gantt chart
+\usepackage{pgfgantt}
+% Display weeks
+\newcounter{myWeekNum}
+\stepcounter{myWeekNum}
+%
+\newcommand{\myWeek}{\themyWeekNum
+    \stepcounter{myWeekNum}
+    \ifnum\themyWeekNum=53
+         \setcounter{myWeekNum}{1}
+    \else\fi
+}
+% Make it sideways
+\usepackage[figuresright]{rotating}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% place figures precisely
+
+
+% Custom variables
+\newcommand{\hmwkTitle}{Just Another Fancy Thesis Proposal} % Assignment title
+\newcommand{\hmwkAuthorName}{Your Name} % Author
+\newcommand{\hmwkKeywords}{Digital Forensics, Forensic Analysis, Cyber Crime, Data Recovery} % Keywords
+
+\hypersetup{
+  pdftitle={\hmwkTitle},
+  pdfauthor={\hmwkAuthorName},
+  pdfkeywords={\hmwkKeywords},
+  hidelinks,
+  pdfproducer={LaTeX Workshop},
+  pdfcreator=pdflatex}
+
+\title{\hmwkTitle}
+\date{}%date stay empty
+
+\author{
+\IEEEauthorblockN{\hmwkAuthorName}
+\IEEEauthorblockA{School of Design and Informatics \\ Abertay University \\ Dundee, United Kingdom \\ 1234567@uad.ac.uk\\}
+}
+
+\addbibresource{bib.bib}
+
+\begin{document}
+\maketitle
+% Abstract
+\section*{Abstract}
+\subsection*{Context}
+
+\lipsum[66]
+\subsection*{Aim}
+\lipsum[75]
+\subsection*{Method}
+\lipsum[66]
+\subsection*{Results}
+\lipsum[75]
+\subsection*{Conclusion}
+\lipsum[66]
+\section*{Keywords}
+\hmwkKeywords
+% Main section
+\section{Introduction}
+\lipsum[1-4]
+\section{Background}
+\lipsum[5-8]
+\section{Method}
+\lipsum[9-14]
+\section{Conclusion}
+\lipsum[15-19]
+% Fake citation
+\nocite{adams2017ultimate}
+\nocite{chambers1930william}
+% Include list of references
+\printbibliography[heading=bibintoc]
+% GANTT Chart
+\section*{Gantt Chart}
+% Update week number as needed
+\setcounter{myWeekNum}{18}
+\ganttset{%
+calendar week text={\myWeek{}}%
+}
+%\begin{minipage}[r]{1.0\columnwidth}
+    \begin{rotate}{270}
+    \begin{ganttchart}[
+    hgrid,
+    time slot format=little-endian,
+    milestone right shift=-0.1,
+    milestone left shift=0.1,
+    vgrid={*{6}{draw=none}, dotted},
+    x unit=.08cm,
+    y unit title=.5cm,
+    y unit chart=.5cm,
+    ]{26.04.2021}{05.09.2021}
+    \gantttitlecalendar{year, month,week} \\
+    \ganttgroup{Literature Review}{01.05.2021}{30.07.2021} \\
+    \ganttmilestone{A Milestone}{24.05.2021} \ganttnewline
+    \ganttgroup{Development Environment Setup}{02.07.2021}{09.07.2021} \\
+        \ganttmilestone{A Milestone}{02.07.2021} \ganttnewline
+    \ganttgroup{Autopsy Plugin Develoment}{09.07.2021}{09.08.2021} \\
+        \ganttmilestone{A Milestone}{09.07.2021} \ganttnewline
+    \ganttgroup{Blackbox Testing}{09.07.2021}{09.08.2021} \\
+    \ganttgroup{Security Testing}{09.07.2021}{09.08.2021} \\
+    \ganttgroup{Dissertation Write-Up}{09.08.2021}{31.08.2021} \\
+    \end{ganttchart}
+    \end{rotate}
+%\end{minipage}
+\clearpage
+\end{document}

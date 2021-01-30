@@ -4,6 +4,7 @@ This repository is home to various unofficial LaTeX templates, which follow the 
 # Types of Templates
 - Essay template for CMP506 Computer Security "The Laws Relating to Cyber Security"
 - Court report template for CMP507 Digital Forensics Masters "John Doe Case Study"
+- Thesis proposal for GRS501 based on [IEEEtran](http://www.michaelshell.org/tex/ieeetran/)
 
 ## License
 
